@@ -64,10 +64,8 @@ const Tasks = ({
                 </select>
               ) : (
                 <span
-                  style={{ width: 80 }}
-                  className={`badge rounded-pill text-bg-${
-                    task.status === "todo" ? "secondary" : task.status === "active" ? "info" : "success"
-                  }`}
+                  style={{ width: 80 , backgroundColor: task.status === "todo" ? "#4fc8c0" : task.status === "active" ? "#f89899" : "#f16eb0" }}
+                  className={`badge rounded-pill`}
                 >
                   {task.status === "todo" ? "À faire" : task.status === "active" ? "En cours" : "Terminé"}
                 </span>
