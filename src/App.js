@@ -13,18 +13,22 @@ function App() {
   const [dataToSend, setDataToSend] = useState([]);
 
   const handleAddTask = () => {
-    let id = uuid();
-    const newTodo = { id, titleTask, dateTask, status: "todo", isEdited: false };
-    setTasks(
-      [...tasks, newTodo].sort((a, b) => {
-        return b.dateTask - a.dateTask;
-      })
-    );
-    if (showClass !== "all" && showClass !== "todo") {
-      setShowClass("todo");
+    if (!titleTask || !dateTask) {
+      alert("Veuillez remplir les champs");
+    } else {
+      let id = uuid();
+      const newTodo = { id, titleTask, dateTask, status: "todo", isEdited: false };
+      setTasks(
+        [...tasks, newTodo].sort((a, b) => {
+          return b.dateTask - a.dateTask;
+        })
+      );
+      if (showClass !== "all" && showClass !== "todo") {
+        setShowClass("todo");
+      }
+      setTitleTask("");
+      setDateTask("");
     }
-    setTitleTask("");
-    setDateTask("");
   };
 
   useEffect(() => {
