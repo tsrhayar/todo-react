@@ -78,7 +78,7 @@ const Tasks = ({
                 </button>
               ) : (
                 <>
-                  <button className="btn btn-primary btn-sm me-2" onClick={() => handleEditTask(task.id)}>
+                  <button className="btn btn-info btn-sm me-2" onClick={() => handleEditTask(task.id)}>
                     Modifier
                   </button>
                   <button className="btn btn-danger btn-sm " onClick={() => handleDeleteTask(task.id)}>
