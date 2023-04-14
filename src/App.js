@@ -148,22 +148,35 @@ function App() {
       <hr />
       <ul className="nav nav-tabs">
         <li className="nav-item">
-          <button className={`nav-link ${showClass === "all" && "active"}`} onClick={() => setShowClass("all")}>
+          <button
+            style={{ width: 200 }}
+            className={`nav-link ${showClass === "all" && "active"}`}
+            onClick={() => setShowClass("all")}
+          >
             Tous
           </button>
         </li>
         <li className="nav-item">
-          <button className={`nav-link ${showClass === "todo" && "active"}`} onClick={() => setShowClass("todo")}>
+          <button
+            style={{ width: 200 }}
+            className={`nav-link ${showClass === "todo" && "active"}`}
+            onClick={() => setShowClass("todo")}
+          >
             À faire
           </button>
         </li>
         <li className="nav-item">
-          <button className={`nav-link ${showClass === "active" && "active"}`} onClick={() => setShowClass("active")}>
+          <button
+            style={{ width: 200 }}
+            className={`nav-link ${showClass === "active" && "active"}`}
+            onClick={() => setShowClass("active")}
+          >
             En cours
           </button>
         </li>
         <li className="nav-item">
           <button
+            style={{ width: 200 }}
             className={`nav-link ${showClass === "completed" && "active"}`}
             onClick={() => setShowClass("completed")}
           >
