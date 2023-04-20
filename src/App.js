@@ -31,17 +31,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    if (showClass !== "all") {
-      const dataFilted = tasks.filter((e) => e.status === showClass);
-      setDataToSend(dataFilted);
-    } else {
-      setDataToSend(tasks);
-    }
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks, showClass]);
-
-  // edit task status
   const handleUpdateTaskStatus = (id, val) => {
     console.log(id, val);
     const newTasks = tasks.map((task) => {
@@ -55,40 +44,7 @@ function App() {
     handleConfirmEditTask(id);
   };
 
-  // edit task status
-  const handleEditTask = (id) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.isEdited = true;
-      }
-      return task;
-    });
-    setTasks(newTasks);
-  };
-
-  // edit task status
-  const handleConfirmEditTask = (id) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.isEdited = false;
-      }
-      return task;
-    });
-    setTasks(newTasks);
-  };
-
-  // edit task title
-  const handleUpdateTaskTitle = (id, val) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.titleTask = val;
-      }
-      return task;
-    });
-    setTasks(newTasks);
-  };
-
-  // edit task date
+  
   const handleUpdateTaskDate = (id, val) => {
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
@@ -99,13 +55,53 @@ function App() {
     setTasks(newTasks);
   };
 
-  // delete task
+  const handleUpdateTaskTitle = (id, val) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.titleTask = val;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
+  const handleEditTask = (id) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.isEdited = true;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
+  const handleConfirmEditTask = (id) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.isEdited = false;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
+
   const handleDeleteTask = (id) => {
     const newTasks = tasks.filter((task) => {
       return task.id !== id;
     });
     setTasks(newTasks);
   };
+
+  useEffect(() => {
+    if (showClass !== "all") {
+      const dataFilted = tasks.filter((e) => e.status === showClass);
+      setDataToSend(dataFilted);
+    } else {
+      setDataToSend(tasks);
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks, showClass]);
 
   return (
     <div className="container mt-5">
@@ -139,7 +135,7 @@ function App() {
         </div>
         <div className="col-2">
           <div className="d-flex h-100">
-            <button className="btn btn-primary mt-auto w-100" onClick={handleAddTask}>
+            <button className="btn btn-outline-primary mt-auto w-100" onClick={handleAddTask}>
               Ajouter
             </button>
           </div>
@@ -186,7 +182,7 @@ function App() {
       </ul>
 
       <table className="table table-striped table-bordered table-hover mt-2">
-        <thead>
+        <thead className="table-dark">
           <tr>
             <th>Titre</th>
             <th>Date</th>

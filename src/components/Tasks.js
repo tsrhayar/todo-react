@@ -73,15 +73,15 @@ const Tasks = ({
             </td>
             <td>
               {task.isEdited ? (
-                <button className="btn btn-success btn-sm me-2" onClick={() => handleConfirmEditTask(task.id)}>
+                <button className="btn btn-outline-success btn-sm me-2" onClick={() => handleConfirmEditTask(task.id)}>
                   Confirmer
                 </button>
               ) : (
                 <>
-                  <button className="btn btn-info btn-sm me-2" onClick={() => handleEditTask(task.id)}>
+                  <button className="btn btn-outline-info btn-sm me-2" onClick={() => handleEditTask(task.id)}>
                     Modifier
                   </button>
-                  <button className="btn btn-danger btn-sm " onClick={() => handleDeleteTask(task.id)}>
+                  <button className="btn btn-outline-danger btn-sm " onClick={() => handleDeleteTask(task.id)}>
                     Supprimer
                   </button>
                 </>
