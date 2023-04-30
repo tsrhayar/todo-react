@@ -8,6 +8,10 @@ const Tasks = ({
   handleUpdateTaskDate,
   handleEditTask,
   handleConfirmEditTask,
+  handleAddUser,
+  handleAddUserToTask,
+  setUser,
+  handleDeleteUser,
 }) => {
   return (
     <tbody className="table-group-divider">
@@ -49,7 +53,50 @@ const Tasks = ({
                 <td>{task.dateTask}</td>
               </>
             )}
-
+            <td>
+              {task.users.map((user, userIndex) => (
+                <div key={userIndex}>
+                  <span className="badge rounded-pill text-bg-dark" style={{ minWidth: 150 }}>
+                    {user}
+                  </span>
+                  {task.isEdited && (
+                    <span
+                      className="badge rounded-pill text-bg-danger ms-1 cursor-pointer"
+                      onClick={() => handleDeleteUser(task.id, user)}
+                    >
+                      Supprimer
+                    </span>
+                  )}
+                </div>
+              ))} {
+                !task.users.length && <span> -- </span>
+              }
+              {task.isAddUser && task.isEdited  ? (
+                <div className="row mt-1">
+                  <div className="col-8">
+                    <input
+                      type="text"
+                      className="form-control form-control-sm"
+                      onChange={(e) => setUser(e.target.value)}
+                    />
+                  </div>
+                  <div className="col-4">
+                    <button className="btn btn-outline-success btn-sm" onClick={() => handleAddUser(task.id)}>
+                      Confirmer
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                task.isEdited && (
+                  <span
+                    className="badge rounded-pill text-bg-success ms-1 cursor-pointer"
+                    onClick={() => handleAddUserToTask(task.id)}
+                  >
+                    Ajouter
+                  </span>
+                )
+              )}
+            </td>
             <td>
               {task.isEdited ? (
                 <select
@@ -64,7 +111,11 @@ const Tasks = ({
                 </select>
               ) : (
                 <span
-                  style={{ width: 80 , backgroundColor: task.status === "todo" ? "#4fc8c0" : task.status === "active" ? "#f89899" : "#f16eb0" }}
+                  style={{
+                    width: 80,
+                    backgroundColor:
+                      task.status === "todo" ? "#4fc8c0" : task.status === "active" ? "#f89899" : "#f16eb0",
+                  }}
                   className={`badge rounded-pill`}
                 >
                   {task.status === "todo" ? "À faire" : task.status === "active" ? "En cours" : "Terminé"}
@@ -78,10 +129,10 @@ const Tasks = ({
                 </button>
               ) : (
                 <>
-                  <button className="btn btn-outline-info btn-sm me-2" onClick={() => handleEditTask(task.id)}>
+                  <button className="btn btn-success btn-sm me-2" onClick={() => handleEditTask(task.id)}>
                     Modifier
                   </button>
-                  <button className="btn btn-outline-danger btn-sm " onClick={() => handleDeleteTask(task.id)}>
+                  <button className="btn btn-secondary btn-sm " onClick={() => handleDeleteTask(task.id)}>
                     Supprimer
                   </button>
                 </>
