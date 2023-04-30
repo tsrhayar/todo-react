@@ -17,7 +17,7 @@ const Tasks = ({
     <tbody className="table-group-divider">
       {!tasks.length ? (
         <tr>
-          <td colSpan={4} className="text-center">
+          <td colSpan={5} className="text-center">
             Pas de taches
           </td>
         </tr>
@@ -69,7 +69,7 @@ const Tasks = ({
                   )}
                 </div>
               ))} {
-                !task.users.length && <span> -- </span>
+                !task.users.length && !task.isEdited && <span> -- </span>
               }
               {task.isAddUser && task.isEdited  ? (
                 <div className="row mt-1">
