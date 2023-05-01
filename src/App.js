@@ -3,25 +3,25 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Tasks from "./components/Tasks";
 
-// const initialState = JSON.parse(localStorage.getItem("tasks")) || [];
-const initialState = [
-  {
-    id: "6d8562c1-6968-4784-a368-b381d4557cdb",
-    titleTask: "Caldwell Kirkland",
-    dateTask: "2016-06-18",
-    status: "todo",
-    users: ["Taha Srhayar", "Hamza Okar", "dfdfdf gdghfg"],
-    isEdited: false,
-  },
-  {
-    id: "fbeff785-013a-474f-9545-ba1a20a5e561",
-    titleTask: "Grant Whitley",
-    dateTask: "2011-09-10",
-    status: "todo",
-    users: [],
-    isEdited: false,
-  },
-];
+const initialState = JSON.parse(localStorage.getItem("tasks")) || [];
+// const initialState = [
+//   {
+//     id: "6d8562c1-6968-4784-a368-b381d4557cdb",
+//     titleTask: "Caldwell Kirkland",
+//     dateTask: "2016-06-18",
+//     status: "todo",
+//     users: ["Taha Srhayar", "Hamza Okar", "dfdfdf gdghfg"],
+//     isEdited: false,
+//   },
+//   {
+//     id: "fbeff785-013a-474f-9545-ba1a20a5e561",
+//     titleTask: "Grant Whitley",
+//     dateTask: "2011-09-10",
+//     status: "todo",
+//     users: [],
+//     isEdited: false,
+//   },
+// ];
 
 function App() {
   const [tasks, setTasks] = useState(initialState);
